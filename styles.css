@@ -1,0 +1,892 @@
+/* ==========================================================================
+GOOGLE FONTS IMPORT
+========================================================================== */
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:200,700,regular|Space+Grotesk:700,regular|Space+Mono:700,700italic,regular,italic');
+
+/* ==========================================================================
+CSS  STYLES
+========================================================================== */
+
+/* Universal reset to ensure consistent styling across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Include padding and border in element's total width/height */
+}
+
+/* Base body styles - sets main font and background for entire presentation */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  /* Primary font family */
+  background: #D6BED8;
+  /* Light purple background theme */
+  overflow: hidden;
+  /* Hide scrollbars for presentation mode */
+  color: #333;
+  /* Default text color */
+}
+
+/* ==========================================================================
+PRESENTATION CONTAINER & SLIDE SYSTEM
+========================================================================== */
+
+/* Main container that holds all slides and controls */
+.presentation-container {
+  width: 100vw;
+  /* Full viewport width */
+  height: 100vh;
+  /* Full viewport height */
+  position: relative;
+  /* Positioning context for absolute children */
+}
+
+/* Base slide styles - all slides start hidden and scaled down */
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* Stack slides on top of each other */
+  top: 0;
+  left: 0;
+  opacity: 0;
+  /* Hidden by default */
+  visibility: hidden;
+  /* Completely hidden from screen readers */
+  transform: scale(0.95);
+  /* Slightly smaller when inactive */
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Smooth transition with easing */
+  background: white;
+  /* Default slide background */
+  padding: 60px;
+  /* Inner spacing */
+  display: flex;
+  /* Flexbox for centering content */
+  flex-direction: column;
+  /* Stack content vertically */
+  justify-content: center;
+  /* Center vertically */
+  align-items: center;
+  /* Center horizontally */
+}
+
+/* Active slide styles - visible and full size */
+.slide.active {
+  opacity: 1;
+  /* Fully visible */
+  visibility: visible;
+  /* Available to screen readers */
+  transform: scale(1);
+  /* Full size */
+}
+
+/* ==========================================================================
+FULLSCREEN MODE ENHANCEMENTS
+========================================================================== */
+
+/* Enhanced fullscreen mode container */
+.presentation-container.fullscreen-active {
+  width: 100vw !important;
+  /* Force full width */
+  height: 100vh !important;
+  /* Force full height */
+  position: fixed !important;
+  /* Stay in place when scrolling */
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  /* Appear above all other content */
+  background: #D6BED8;
+  /* Match body background */
+}
+
+/* Increased padding for fullscreen slides */
+.presentation-container.fullscreen-active .slide {
+  padding: 80px;
+}
+
+/* Fixed positioning for navigation in fullscreen */
+.presentation-container.fullscreen-active .nav-container {
+  position: fixed;
+  bottom: 40px;
+}
+
+/* Fixed positioning for slide indicators in fullscreen */
+.presentation-container.fullscreen-active .slide-indicator {
+  position: fixed;
+  bottom: 130px;
+}
+
+/* Enhanced navigation button styling in fullscreen */
+.presentation-container.fullscreen-active .nav-btn {
+  background: rgba(255, 255, 255, 0.95);
+  /* Semi-transparent white */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  /* Drop shadow for visibility */
+}
+
+/* Fullscreen navigation button hover effects */
+.presentation-container.fullscreen-active .nav-btn:hover {
+  background: white;
+  /* Solid white on hover */
+  transform: scale(1.15);
+  /* Slight grow effect */
+}
+
+/* Enhanced indicator styling in fullscreen */
+.presentation-container.fullscreen-active .indicator {
+  background: rgba(255, 255, 255, 0.7);
+  /* Semi-transparent white */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+}
+
+/* Active indicator in fullscreen */
+.presentation-container.fullscreen-active .indicator.active {
+  background: white;
+  /* Solid white for active state */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* Stronger shadow */
+}
+
+/* ==========================================================================
+SLIDE 1 - TITLE/COVER SLIDE
+========================================================================== */
+
+/* Title slide with purple theme */
+.slide-1 {
+  background: #D3B6D3;
+  /* Light purple background */
+  color: #5A3359;
+  /* Dark purple text */
+  text-align: center;
+  /* Center all text */
+}
+
+/* Main title - Maria Jose */
+.slide-1 h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  /* Bold, modern font */
+  font-weight: 700;
+  font-size: 4rem;
+  /* Large, impactful size */
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-out;
+  /* Fade in from bottom animation */
+}
+
+/* Subtitle - Data Analyst */
+.slide-1 h2 {
+  font-family: 'Space Mono', monospace;
+  /* Monospace for tech feel */
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  /* Slightly transparent */
+  animation: fadeInUp 1s ease-out 0.3s both;
+  /* Delayed fade in */
+}
+
+/* Tagline paragraph */
+.slide-1 p {
+  font-family: 'Inconsolata', monospace;
+  /* Lighter monospace font */
+  font-weight: 200;
+  /* Light weight for elegance */
+  font-size: 1.2rem;
+  max-width: 600px;
+  /* Constrain width for readability */
+  line-height: 1.6;
+  /* Comfortable line spacing */
+  animation: fadeInUp 1s ease-out 0.6s both;
+  /* Further delayed animation */
+}
+
+/* ==========================================================================
+SLIDE 2 - PROFESSIONAL SUMMARY
+========================================================================== */
+
+/* About Me slide with blue theme */
+.slide-2 {
+  background: #7faeec;
+  /* Light blue background */
+  color: #323473;
+  /* Dark blue text */
+}
+
+/* Summary content wrapper */
+.summary-content {
+  max-width: 800px;
+  /* Constrain width */
+  text-align: center;
+  /* Center content */
+}
+
+/* "About Me" heading with underline effect */
+.summary-content h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #323473;
+  margin-bottom: 40px;
+  position: relative;
+  /* Essential for pseudo-element positioning */
+  text-align: left;
+  /* Left-align text */
+  display: inline-block;
+  /* Shrink to content width */
+}
+
+/* Decorative underline using pseudo-element */
+.summary-content h1::after {
+  content: '';
+  /* Empty content for decoration */
+  width: 100%;
+  /* Set to a fixed width to match other slides */
+  height: 4px;
+  /* Line thickness */
+  background: #323473;
+  /* Match text color */
+  position: absolute;
+  bottom: -10px;
+  /* Position below text */
+  left: 0;
+  /* Align to left edge */
+}
+
+/* Main summary text */
+.summary-text {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  /* Generous line spacing */
+  color: #323473;
+  margin-bottom: 40px;
+}
+
+/* Skills tags container */
+.key-skills {
+  display: flex;
+  justify-content: center;
+  /* Center the tags */
+  gap: 30px;
+  /* Space between tags */
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+}
+
+/* Individual skill tag styling */
+.skill-tag {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  background: #BFD3EB;
+  /* Light blue background */
+  color: #2d3748;
+  /* Dark gray text */
+  padding: 12px 24px;
+  /* Internal spacing */
+  border-radius: 25px;
+  /* Rounded pill shape */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* Subtle border */
+}
+
+/* Hover effect for skill tags */
+.skill-tag:hover {
+  transform: translateY(-5px);
+  /* Lift up slightly */
+}
+
+/* ==========================================================================
+SLIDE 3 - PROFESSIONAL EXPERIENCE TIMELINE
+========================================================================== */
+
+/* Experience timeline slide with light blue theme */
+.slide-3 {
+  background: #BFD3EB;
+  /* Light blue background */
+  color: #2d3748;
+  /* Dark gray text */
+}
+
+/* Timeline container with flexbox centering */
+.timeline-container {
+  max-width: 1000px;
+  width: 100%;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  display: flex;
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: center;
+  /* Center horizontally */
+}
+
+/* "Professional Journey" heading */
+.timeline-container h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  color: #2d3748;
+  position: relative;
+  /* For pseudo-element */
+  display: inline-block;
+  text-align: left;
+}
+
+/* Decorative underline for timeline heading */
+.timeline-container h1::after {
+  content: '';
+  width: 100%;
+  /* Set to a fixed width to match other slides */
+  height: 4px;
+  background: #2d3748;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+/* Main timeline container */
+.timeline {
+  position: relative;
+  padding: 20px 0;
+  display: block;
+}
+
+/* Vertical timeline line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  /* Center the line */
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  /* Line thickness */
+  background: #2A5C47;
+  /* Dark green */
+  transform: translateX(-50%);
+  /* Perfect center alignment */
+}
+
+/* Individual timeline item positioning */
+.timeline-item {
+  position: relative;
+  margin: 30px 0;
+  /* Vertical spacing */
+  width: 45%;
+  /* Take up less than half width */
+  text-align: left;
+}
+
+/* Odd items (1st, 3rd, etc.) positioned on left */
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+/* Even items (2nd, 4th, etc.) positioned on right */
+.timeline-item:nth-child(even) {
+  left: 55%;
+  /* Start after the center line and gap */
+}
+
+/* Content box for each timeline item */
+.timeline-content {
+  background: white;
+  /* White background for contrast */
+  padding: 25px;
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  position: relative;
+  margin-top: 0;
+}
+
+/* Arrow pointing right for odd items (left side) */
+.timeline-item:nth-child(odd) .timeline-content::before {
+  content: '';
+  position: absolute;
+  right: -15px;
+  /* Position outside the box */
+  top: 20px;
+  width: 0;
+  height: 0;
+  /* CSS triangle pointing right */
+  border-left: 15px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  transform: none;
+}
+
+/* Arrow pointing left for even items (right side) */
+.timeline-item:nth-child(even) .timeline-content::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  /* Position outside the box */
+  top: 20px;
+  width: 0;
+  height: 0;
+  /* CSS triangle pointing left */
+  border-right: 15px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  transform: none;
+}
+
+/* Date badge styling */
+.timeline-date {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  background: #FDAFC5;
+  /* Pink background */
+  color: #6C2D4E;
+  /* Dark pink text */
+  padding: 8px 16px;
+  border-radius: 20px;
+  /* Pill shape */
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Job title styling */
+.timeline-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #9A3660;
+  /* Muted pink */
+  margin-bottom: 5px;
+}
+
+/* Company name styling */
+.timeline-company {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  color: #305656;
+  /* Dark teal */
+  margin-bottom: 15px;
+}
+
+/* Job description styling */
+.timeline-description {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  color: #4a5568;
+  /* Medium gray */
+  line-height: 1.6;
+  /* Good readability */
+}
+
+/* ==========================================================================
+SLIDE 4 - TECHNICAL SKILLS
+========================================================================== */
+
+/* Skills slide with blue theme */
+.slide-4 {
+  background: #8BC5DF;
+  /* Medium-light  blue background */
+  color: #2d3748;
+  /* Dark gray text */
+}
+
+/* Skills content container */
+.skills-container {
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+/* "Technical Expertise" heading */
+.skills-container h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  color: #2d3748;
+  position: relative;
+  /* For pseudo-element */
+  display: inline-block;
+}
+
+/* Decorative underline for skills heading */
+.skills-container h1::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: #2d3748;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+/* Grid layout for skill categories */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Responsive grid */
+  gap: 40px;
+  /* Space between grid items */
+}
+
+/* Individual skill category card */
+.skill-category {
+  background: white;
+  /* White background for contrast */
+  padding: 30px;
+  border-radius: 15px;
+  /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Drop shadow */
+  transition: transform 0.3s ease;
+  /* Smooth hover effect */
+}
+
+/* Hover effect for skill categories */
+.skill-category:hover {
+  transform: translateY(-5px);
+  /* Lift up slightly */
+}
+
+/* Skill category headings */
+.skill-category h3 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #2A5C47;
+  /* Dark green */
+  margin-bottom: 20px;
+}
+
+/* Container for skill tags within each category */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow wrapping */
+  gap: 10px;
+  /* Space between tags */
+  justify-content: center;
+  /* Center the tags */
+}
+
+/* Individual skill item styling */
+.skill-item {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  background: #BFD3EB;
+  /* Light blue background */
+  padding: 8px 16px;
+  border-radius: 20px;
+  /* Pill shape */
+  font-size: 0.9rem;
+  color: #2d3748;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* Subtle border */
+}
+
+/* ==========================================================================
+SLIDE 5 - CASE STUDY (E-WASTE)
+========================================================================== */
+
+/* E-waste case study slide with green theme */
+.slide-5 {
+  background: #1B5E20;
+  /* Dark green  background */
+  color: #C8E6C9;
+  /*  Light green text */
+}
+
+/* Case study content container */
+.case-study-container {
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Case study main heading */
+.case-study-container h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  position: relative;
+  /* For pseudo-element */
+  display: inline-block;
+}
+
+/* Decorative underline for case study heading */
+.case-study-container h1::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: #C8E6C9;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+/* Case study subtitle */
+.case-study-subtitle {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  /* Slightly transparent */
+}
+
+/* Grid layout for case study sections */
+.case-study-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Individual case study item (Challenge, Process, Results, Impact) */
+.case-study-item {
+  background: rgba(255, 255, 255, 0.1);
+  /* Semi-transparent white */
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  /* Glassmorphism effect */
+}
+
+/* Case study item headings */
+.case-study-item h3 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+/* Case study item content */
+.case-study-item p {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 200;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+SLIDE 6 - CASE STUDY (MAMORU)
+========================================================================== */
+
+/* Mamoru case study slide with Dark red-brown theme */
+.slide-6 {
+  background: #662400;
+  /* Dark red-brown background */
+  color:  #FFE1B8;
+  /* Warm beige text  */
+}
+
+/* Mamoru case study container (inherits from .case-study-container) */
+.slide-6 .case-study-container h1::after {
+  background: #FFE1B8;
+  /* Match text color for underline */
+}
+
+/* ==========================================================================
+SLIDE 7 - CONTACT INFORMATION
+========================================================================== */
+
+/* Contact slide with pink theme */
+.slide-7 {
+  background: #FDAFC5;
+  /* Pink background */
+  color: #6C2D4E;
+  /* Dark pink text */
+  text-align: center;
+}
+
+/* "Let's Connect" heading with decorative underline */
+.contact-container h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  position: relative;
+  /* For pseudo-element positioning */
+  display: inline-block;
+  /* Shrink to content width */
+}
+
+/* Decorative underline for contact heading */
+.contact-container h1::after {
+  content: '';
+  width: 100%;
+  /* Set to a fixed width to match other slides */
+  height: 4px;
+  background: #6C2D4E;
+  /* Match text color */
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+/* Contact subtitle */
+.contact-container p {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 200;
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+/* Contact information grid */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Creates three equal columns */
+  justify-items: center;
+  /* Centers each item in its column */
+  gap: 40px;
+  /* Space between items */
+}
+
+/* Individual contact information cards */
+.contact-item {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0.1);
+  /* Semi-transparent white */
+  padding: 20px 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  /* Glassmorphism effect */
+  width: 100%;
+  /* Ensures cards take up full column width */
+  max-width: 300px;
+  /* Sets a maximum width for larger screens */
+}
+
+/* Hover effect for contact information cards */
+.contact-item:hover {
+  transform: translateY(-5px);
+  /* Lift up slightly */
+}
+
+/* ==========================================================================
+NAVIGATION CONTROLS
+========================================================================== */
+
+/* Navigation buttons container */
+.nav-container {
+  position: absolute;
+  bottom: 30px;
+  /* Distance from bottom (before 50)*/
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center horizontally */
+  display: flex;
+  gap: 15px;
+  /* Space between buttons */
+  z-index: 1000;
+  /* Appear above slides */
+}
+
+/* Individual navigation buttons */
+.nav-btn {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  /* Circular buttons */
+  background: rgba(255, 255, 255, 0.9);
+  /* Semi-transparent white */
+  color: #2A5C47;
+  /* Dark green text */
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Smooth transitions */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation button hover effects */
+.nav-btn:hover {
+  background: white;
+  /* Solid white on hover */
+  transform: scale(1.1);
+  /* Slightly larger */
+}
+
+/* ==========================================================================
+SLIDE INDICATORS (...)
+========================================================================== */
+
+/* Container for slide indicator dots */
+.slide-indicator {
+  position: absolute;
+  bottom: 100px;
+  /* Above navigation buttons (before 120)*/
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center horizontally */
+  display: flex;
+  gap: 10px;
+  /* Space between dots */
+}
+
+/* Individual indicator dots */
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  /* Circular dots */
+  background: rgba(255, 255, 255, 0.5);
+  /* Semi-transparent white */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Smooth transitions */
+}
+
+/* Active indicator styling */
+.indicator.active {
+  background: white;
+  /* Solid white for active slide */
+  transform: scale(1.3);
+  /* Larger than inactive dots */
+}
+
+/* ==========================================================================
+RESPONSIVE DESIGN
+========================================================================== */
+/* Mobile and tablet adjustments */
+@media (max-width: 768px) {
+  /* Group all mobile-specific rules here */
+  .slide {
+    padding: 30px 20px;
+  }
+  .slide-1 h1 {
+    font-size: 2.5rem;
+  }
+  .case-study-content {
+    grid-template-columns: 1fr;
+  }
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  /* Timeline mobile adjustments */
+  .timeline::before {
+    left: 30px;
+  }
+  .timeline-item {
+    width: calc(100% - 70px);
+    left: 70px !important;
+  }
+  .timeline-item .timeline-content::before {
+    left: -15px !important;
+    border-right: 15px solid white !important;
+    border-left: none !important;
+  }
+}
