@@ -1,7 +1,7 @@
 # Presentation Deck by Majo
 
 ### Accessibility Features
-This [presentation](https://majo-es.github.io/Majo-es_presentation_deck.github.io/) deck has been designed and built with accessibility in mind, adhering to modern web standards. Key accessibility features include:
+This [presentation](https://majo-es.github.io/presentation_deck/) deck has been designed and built with accessibility in mind, adhering to modern web standards. Key accessibility features include:
 
 - **WCAG-Compliant Color Contrast**: All text and background color combinations meet or exceed the WCAG AA standard, ensuring readability for users with low vision or color blindness.
 
